@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Le Jugement du Destin</title>
+    <style>
+        body {
+            background-color: #1a1a1a;
+            color: #f4f4f4;
+            font-family: "Georgia", serif;
+            text-align: center;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 100vh;
+        }
+        h1 {
+            font-size: 3em;
+            color: crimson;
+        }
+        .character-image {
+            width: 40%;
+            margin: 20px auto;
+            border-radius: 10px;
+            box-shadow: 0px 0px 15px rgba(255, 0, 0, 0.5);
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 1em;
+            background-color: #444;
+            color: #f4f4f4;
+            border: none;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        button:hover {
+            background-color: crimson;
+        }
+        .footer {
+            margin-top: 30px;
+        }
+        .footer img {
+            width: 80px;
+            margin: 10px;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+        .footer img:hover {
+            opacity: 1;
+        }
+        .twitch-button {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 15px;
+            font-size: 1em;
+            background-color: #9146FF;
+            color: #f4f4f4;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .twitch-button:hover {
+            background-color: #772ce8;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>L'Oracle des Destins</h1>
+    <img src="https://i.ibb.co/jgLb6hc/DALL-E-2024-10-26-14-32-03-A-mysterious-and-imposing-entity-named-The-Judgment-of-Fate-cloaked-in-da.webp" alt="Le Jugement du Destin" class="character-image">
+
+    <div id="content">
+        <p>Êtes-vous prêt à découvrir quel seigneur sera imposé par L'Oracle des Destins ?</p>
+        <button onclick="demanderNom()">Commencer</button>
+    </div>
+
+    <script>
+        const seigneurs = [
+            "Karl Franz (Empire)", "Balthasar Gelt (Empire)", "Markus Wulfhart (Empire)",
+            "Grimgor Ironhide (Peaux-Vertes)", "Azhag the Slaughterer (Peaux-Vertes)", "Grom the Paunch (Peaux-Vertes)", "Wurrzag (Peaux-Vertes)",
+            "Mannfred von Carstein (Comtes Vampires)", "Vlad von Carstein (Comtes Vampires)", "Isabella von Carstein (Comtes Vampires)", "Helman Ghorst (Comtes Vampires)", "Neferata (Comtes Vampires)",
+            "Tyrion (Hauts Elfes)", "Teclis (Hauts Elfes)", "Alarielle the Radiant (Hauts Elfes)", "Eltharion (Hauts Elfes)", "Alith Anar (Hauts Elfes)",
+            "Malekith (Elfes Noirs)", "Morathi (Elfes Noirs)", "Crone Hellebron (Elfes Noirs)", "Lokhir Fellheart (Elfes Noirs)",
+            "Queek Headtaker (Skavens)", "Lord Skrolk (Skavens)", "Tretch Craventail (Skavens)", "Ikit Claw (Skavens)", "Throt the Unclean (Skavens)", "Deathmaster Snikch (Skavens)",
+            "Mazdamundi (Hommes-Lézards)", "Kroq-Gar (Hommes-Lézards)", "Tehenhauin (Hommes-Lézards)", "Tiktaq'to (Hommes-Lézards)", "Nakai the Wanderer (Hommes-Lézards)", "Gor-Rok (Hommes-Lézards)",
+            "Thorgrim Grudgebearer (Nains)", "Ungrim Ironfist (Nains)", "Belegar Ironhammer (Nains)", "Grombrindal (Nains)", "Thorek Ironbrow (Nains)",
+            "Count Noctilus (Côte Vampirique)", "Luthor Harkon (Côte Vampirique)", "Aranessa Saltspite (Côte Vampirique)", "Cylostra Direfin (Côte Vampirique)",
+            "Louen Leoncoeur (Bretonnie)", "Alberic de Bordeleaux (Bretonnie)", "Fay Enchantress (Bretonnie)", "Repanse de Lyonesse (Bretonnie)",
+            "Settra the Imperishable (Rois des Tombes)", "High Queen Khalida (Rois des Tombes)", "Arkhan the Black (Rois des Tombes)", "Grand Hierophant Khatep (Rois des Tombes)",
+            "Archaon the Everchosen (Guerriers du Chaos)", "Sigvald the Magnificent (Guerriers du Chaos)", "Kholek Suneater (Guerriers du Chaos)", "Valkia the Bloody (Guerriers du Chaos)", "Festus the Leechlord (Guerriers du Chaos)", "Vilitch the Curseling (Guerriers du Chaos)", "Azazel (Guerriers du Chaos)",
+            "Tzarina Katarin (Kislev)", "Kostaltyn (Kislev)", "Boris Ursus (Kislev)",
+            "Miao Ying (Cathay)", "Zhao Ming (Cathay)", "Yuan Bo (Cathay)",
+            "Daemon Prince (Démons du Chaos)",
+            "Skarbrand (Khorne)", "Ku'gath Plaguefather (Nurgle)", "Kairos Fateweaver (Tzeentch)", "N'Kari (Slaanesh)"
+        ];
+
+        function demanderNom() {
+            const content = document.getElementById("content");
+            content.innerHTML = `
+                <p>Quel est ton nom, mortel ?</p>
+                <input type="text" id="playerName" placeholder="Entrez votre nom">
+                <button onclick="choisirSeigneur()">Valider</button>
+            `;
+        }
+
+        function choisirSeigneur() {
+            const playerName = document.getElementById("playerName").value;
+            if (!playerName) {
+                alert("Veuillez entrer un nom.");
+                return;
+            }
+            const seigneurChoisi = seigneurs[Math.floor(Math.random() * seigneurs.length)];
+            const content = document.getElementById("content");
+            content.innerHTML = `
+                <p>${playerName}, L'Oracle des Destins a parlé !</p>
+                <p>Ton destin est de jouer le seigneur <strong>${seigneurChoisi}</strong>.</p>
+                <p>Si tu n'obéis pas, un terrible sort t'attend...</p>
+                <button onclick="recommencer('${seigneurChoisi}')">Je n'ai pas le DLC...</button>
+            `;
+        }
+
+        function recommencer(seigneurPrecedent) {
+            let nouveauSeigneur;
+            do {
+                nouveauSeigneur = seigneurs[Math.floor(Math.random() * seigneurs.length)];
+            } while (nouveauSeigneur === seigneurPrecedent);
+            const content = document.getElementById("content");
+            content.innerHTML = `
+                <p>L'Oracle des Destins te donne une nouvelle chance.</p>
+                <p>Tu devras cette fois jouer le seigneur <strong>${nouveauSeigneur}</strong>.</p>
+                <p>Pas de nouvelles excuses, ou le Destin ne sera pas aussi clément...</p>
+                <button onclick="demanderNom()">Recommencer</button>
+            `;
+        }
+    </script>
+
+    <div class="footer">
+        <img src="https://i.ibb.co/dmghmxG/logo-samos.png" alt="Logo de Samos">
+        <a href="https://cdn.discordapp.com/attachments/972171182390513724/1283458846571888710/samos_le_sage.png?ex=671dbc72&is=671c6af2&hm=84ca529f880c5b0fc6ce33bdbc8ca75d183d3554a02bee3ede55e73722f36b2f" target="_blank">
+            <img src="https://cdn.discordapp.com/attachments/972171182390513724/1283458846571888710/samos_le_sage.png?ex=671dbc72&is=671c6af2&hm=84ca529f880c5b0fc6ce33bdbc8ca75d183d3554a02bee3ede55e73722f36b2f" alt="Samos le Sage" style="width:150px;">
+        </a>
+        <a href="https://www.twitch.tv/samoslesage" class="twitch-button" target="_blank">Ma chaîne Twitch</a>
+    </div>
+
+</body>
+</html>
